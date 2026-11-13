@@ -1,4 +1,4 @@
-import { uploadPhoto, subscribeToPhotos } from "../../shared/api.real.js";
+import { uploadPhoto, subscribeToPhotos } from "../../shared/api.js";
 
 document.querySelector("#app").innerHTML = `
   <h1>Test Supabase</h1>
