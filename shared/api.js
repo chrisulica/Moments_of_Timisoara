@@ -1,4 +1,3 @@
-
 export async function uploadPhoto(blob, locationId) {
   await new Promise((r) => setTimeout(r, 500));
   return URL.createObjectURL(blob);
