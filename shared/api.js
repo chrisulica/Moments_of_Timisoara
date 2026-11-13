@@ -1,17 +1,7 @@
-export async function uploadPhoto(blob, locationId) {
-  await new Promise((r) => setTimeout(r, 500));
-  return URL.createObjectURL(blob);
-}
+import * as mock from "./api.mock.js";
+import * as real from "./api.real.js";
 
-export function subscribeToPhotos(callback) {
-  const timer = setInterval(() => {
-    callback({
-      id: crypto.randomUUID(),
-      locationId: "gara-nord",
-      imageUrl: "/placeholder.webp",
-      createdAt: new Date().toISOString(),
-      approved: true,
-    });
-  }, 5000);
-  return () => clearInterval(timer);
-}
+const impl = import.meta.env.VITE_USE_MOCK === "true" ? mock : real;
+
+export const uploadPhoto = (...args) => impl.uploadPhoto(...args);
+export const subscribeToPhotos = (...args) => impl.subscribeToPhotos(...args);
